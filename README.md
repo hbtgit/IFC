@@ -1,4 +1,3 @@
-# IFC File Converter
 # Mythic-Systems-Structural-Analysis-Tool
 Welcome to the Mythic Systems Structural Analysis Tool. This software provides comprehensive tools for analyzing structural loads based on the ASCE-7 standard.
 

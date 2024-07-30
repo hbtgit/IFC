@@ -1,0 +1,8 @@
+ifcopenshell
+seaborn
+matplotlib
+numpy
+scipy
+fpdf
+customtkinter
+tkinterdnd2
