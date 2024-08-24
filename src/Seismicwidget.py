@@ -1,9 +1,11 @@
 import tkinter as tk
 from tkinter import BooleanVar, Label, Entry, Checkbutton
 from tkinterdnd2 import TkinterDnD, DND_FILES
-
+import customtkinter as ctk
+import tkinterDnD
 
 import tkinter as tk
+textcolor='white'
 
 def calculate_seismic_load(site_class_entry, importance_factor_entry, spectral_response_acceleration_entry):
     # Retrieve user input
@@ -40,25 +42,26 @@ def compute_seismic_load(site_class, importance_factor, spectral_response_accele
 
 def create_seismic_input_widgets(master):
     # Create and place widgets
-    site_class_label = tk.Label(master, text="Site Class")
-    site_class_label.grid(row=0, column=0)
-    site_class_entry = tk.Entry(master)
-    site_class_entry.grid(row=0, column=1)
+    entry_width=200
+    site_class_label = ctk.CTkLabel(master, text="Site Class" ,fg_color='transparent',font=("Arial", 16, "bold"))
+    site_class_label.grid(row=0, column=0,pady=10,padx=(100,0))
+    site_class_entry = ctk.CTkEntry(master,placeholder_text="Enter site class" ,width=entry_width)
+    site_class_entry.grid(row=0, column=1,)
 
-    importance_factor_label = tk.Label(master, text="Importance Factor")
-    importance_factor_label.grid(row=1, column=0)
-    importance_factor_entry = tk.Entry(master)
+    importance_factor_label = ctk.CTkLabel(master, text="Importance Factor",fg_color='transparent',font=("Arial", 16, "bold"))
+    importance_factor_label.grid(row=1, column=0,pady=10,padx=(100,0))
+    importance_factor_entry = ctk.CTkEntry(master,placeholder_text="Enter Importance Factor",width=entry_width)
     importance_factor_entry.grid(row=1, column=1)
 
-    spectral_response_acceleration_label = tk.Label(master, text="Spectral Response Acceleration")
-    spectral_response_acceleration_label.grid(row=2, column=0)
-    spectral_response_acceleration_entry = tk.Entry(master)
-    spectral_response_acceleration_entry.grid(row=2, column=1)
+    spectral_response_acceleration_label = ctk.CTkLabel(master, text="Spectral Response Acceleration",fg_color='transparent',font=("Arial", 16, "bold"))
+    spectral_response_acceleration_label.grid(row=2, column=0,pady=10,padx=(100,0))
+    spectral_response_acceleration_entry = ctk.CTkEntry(master,placeholder_text="Enter Spectral Response Acceleration",width=entry_width)
+    spectral_response_acceleration_entry.grid(row=2, column=1,pady=10,)
 
-    calculate_button = tk.Button(master, text="Calculate Seismic Load", 
+    calculate_button = ctk.CTkButton(master,height=40,width=200,font=("Arial", 16, "bold"),fg_color='#4C7766',hover_color='#4C7766', text="Calculate Seismic Load", 
                                  command=lambda: calculate_seismic_load(site_class_entry, 
                                                                         importance_factor_entry, 
                                                                         spectral_response_acceleration_entry))
-    calculate_button.grid(row=3, columnspan=2)
+    calculate_button.grid(row=3, columnspan=5,pady=30,padx=(350,0))
 
     return master

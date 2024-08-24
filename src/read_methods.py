@@ -20,10 +20,6 @@ from main import *
 import matplotlib
 matplotlib.use('Agg')  # Use a non-interactive backend
 
-# from gui import *
-# from calculate import *
-# from report import *
-# from widget import *
 import ifcopenshell
 import re
 import seaborn as sns
