@@ -62,9 +62,9 @@ def live_load_widget(floor_count):
     
 
     # Add a button to submit the inputs
-    submit_button = ctk.CTkButton(scrollable_frame, text="Submit", command=lambda: on_submit(live_loads, root),font=("Arial", 16, "bold"),fg_color='#4C7766',hover_color='#4C7766',)
+    submit_button = ctk.CTkButton(scrollable_frame, text="Submit", command=lambda: on_submit(live_loads, root),font=("Arial", 16, "bold"),fg_color='#677791',hover_color='#677791',)
     submit_button.grid(row=floor_count + 1, columnspan=2, pady=20)
-    my_button = ctk.CTkButton(scrollable_frame, text='Change Mode', command=change, font=("Arial", 16, "bold"), fg_color='#4C7766', hover_color='#4C7766', compound='left')
+    my_button = ctk.CTkButton(scrollable_frame, text='Change Mode', command=change, font=("Arial", 16, "bold"), fg_color='#677791', hover_color='#677791', compound='left')
     my_button.grid(row=12, columnspan=1, pady=(50, 0), padx=(0, 0))
     root.mainloop()
     return results
