@@ -78,65 +78,65 @@ def main():
     content_frame.pack(expand=True, fill='both')
 
     site_class_label = ctk.CTkLabel(content_frame, text="Site Class" ,fg_color='transparent',font=("Arial", 16, "bold"))
-    site_class_label.grid(row=0, column=0,pady=10,padx=(100,0))
+    site_class_label.grid(row=0, column=0,pady=10,padx=(50,0), sticky='w')
     site_class_entry = ctk.CTkEntry(content_frame,placeholder_text="Enter site class" ,width=entry_width)
-    site_class_entry.grid(row=0, column=1,)
+    site_class_entry.grid(row=0, column=1, sticky='w')
 
     importance_factor_label = ctk.CTkLabel(content_frame, text="Importance Factor",fg_color='transparent',font=("Arial", 16, "bold"))
-    importance_factor_label.grid(row=1, column=0,pady=10,padx=(100,0))
+    importance_factor_label.grid(row=1, column=0,pady=10,padx=(50,0), sticky='w')
     importance_factor_entry = ctk.CTkEntry(content_frame,placeholder_text="Enter Importance Factor",width=entry_width)
-    importance_factor_entry.grid(row=1, column=1)
+    importance_factor_entry.grid(row=1, column=1, sticky='w')
 
     spectral_response_acceleration_label = ctk.CTkLabel(content_frame, text="Spectral Response Acceleration",fg_color='transparent',font=("Arial", 16, "bold"))
-    spectral_response_acceleration_label.grid(row=2, column=0,pady=10,padx=(100,0))
+    spectral_response_acceleration_label.grid(row=2, column=0,pady=10,padx=(50,0), sticky='w')
     spectral_response_acceleration_entry = ctk.CTkEntry(content_frame,placeholder_text="Enter Spectral Response Acceleration",width=entry_width)
-    spectral_response_acceleration_entry.grid(row=2, column=1,pady=10,)
+    spectral_response_acceleration_entry.grid(row=2, column=1,pady=10, sticky='w')
 
     calculate_button = ctk.CTkButton(content_frame,height=40,width=200,font=("Arial", 16, "bold"),fg_color='#677791',hover_color='#677791', text="Calculate Seismic Load", 
                                  command=lambda: calculate_seismic_load(site_class_entry, 
                                                                         importance_factor_entry, 
                                                                         spectral_response_acceleration_entry))
-    calculate_button.grid(row=3, columnspan=5,pady=30,padx=(350,0))
+    calculate_button.grid(row=3, column=1, pady=(30, 0), padx=(0, 0), sticky='w')
     root.title("IFC to PDF Converter")
     root.geometry("900x900")
     root.resizable(False, False)
     
     dark_light_image = ctk.CTkImage(light_image=Image.open("dark-light.png"),
                         dark_image=Image.open("dark-light.png"), size=(30, 30))
-    label = ctk.CTkLabel(content_frame, text="Drag and Drop", corner_radius=10, font=("Arial", 16, "bold"),fg_color='#677791')
-    label.grid(row=4, columnspan=2, pady=(10, 20), padx=(70, 0))
-
-    ctk.CTkLabel(content_frame, text="Snow Load (lbs/sq. ft.):", font=("Arial", 16, "bold")).grid(row=5, column=0, sticky='w', pady=10, padx=(50, 0))
-    snow_load_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Snow load")
-    snow_load_entry.grid(row=5, column=1, sticky='w')
-
-    ctk.CTkLabel(content_frame, text="Ice Load (lbs/sq. ft.):", font=("Arial", 16, "bold")).grid(row=6, column=0, sticky='w', pady=10, padx=(50, 0))
-    ice_load_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter ICE Load")
-    ice_load_entry.grid(row=6, column=1, sticky='w')
-
+    label = ctk.CTkLabel(content_frame, text="Drag and Drop Here..", corner_radius=10, font=("Arial", 16, "bold"))
+    label.grid(row=1, columnspan=5, pady=(10, 20), padx=(650, 0))
+    
     remove_zero_point_var = BooleanVar(value=False)
     checkbox = ctk.CTkCheckBox(content_frame, text="Remove (0,0,0) Point", variable=remove_zero_point_var, font=("Arial", 16, "bold"), fg_color='#677791', hover_color='#677791')
-    checkbox.grid(row=7, columnspan=2, sticky='w', pady=10, padx=(50, 0))
+    checkbox.grid(row=6, columnspan=2, sticky='w', pady=50, padx=(50, 0))
 
-    ctk.CTkLabel(content_frame, text="Roof Uplift Pressure (psf)", font=("Arial", 16, "bold")).grid(row=8, column=0, sticky='w', pady=10, padx=(50, 0))
+    ctk.CTkLabel(content_frame, text="Ice Load (lbs/sq. ft.):", font=("Arial", 16, "bold")).grid(row=7, column=0, sticky='w', pady=10, padx=(50, 0))
+    ice_load_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter ICE Load")
+    ice_load_entry.grid(row=7, column=1, sticky='w')
+
+    ctk.CTkLabel(content_frame, text="Snow Load (lbs/sq. ft.):", font=("Arial", 16, "bold")).grid(row=8, column=0, sticky='w', pady=10, padx=(50, 0))
+    snow_load_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Snow load")
+    snow_load_entry.grid(row=8, column=1, sticky='w')
+
+    ctk.CTkLabel(content_frame, text="Roof Uplift Pressure (psf)", font=("Arial", 16, "bold")).grid(row=9, column=0, sticky='w', pady=10, padx=(50, 0))
     roof_uplift_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Roof Uplift")
-    roof_uplift_entry.grid(row=8, column=1, sticky='w')
+    roof_uplift_entry.grid(row=9, column=1, sticky='w')
 
-    ctk.CTkLabel(content_frame, text="Roof Downpressure (psf)", font=("Arial", 16, "bold")).grid(row=9, column=0, sticky='w', pady=10, padx=(50, 0))
+    ctk.CTkLabel(content_frame, text="Roof Downpressure (psf)", font=("Arial", 16, "bold")).grid(row=10, column=0, sticky='w', pady=10, padx=(50, 0))
     roof_downpressure_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Roof Down Pressure")
-    roof_downpressure_entry.grid(row=9, column=1, sticky='w')
+    roof_downpressure_entry.grid(row=10, column=1, sticky='w')
 
-    ctk.CTkLabel(content_frame, text="Wind Force (lbs)", font=("Arial", 16, "bold")).grid(row=10, column=0, sticky='w', pady=10, padx=(50, 0))
+    ctk.CTkLabel(content_frame, text="Wind Force (lbs)", font=("Arial", 16, "bold")).grid(row=11, column=0, sticky='w', pady=10, padx=(50, 0))
     wind_force_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Wind force")
-    wind_force_entry.grid(row=10, column=1, sticky='w')
+    wind_force_entry.grid(row=11, column=1, sticky='w')
 
-    ctk.CTkLabel(content_frame, text="Wall Height (feet)", font=("Arial", 16, "bold")).grid(row=11, column=0, sticky='w', pady=10, padx=(50, 0))
+    ctk.CTkLabel(content_frame, text="Wall Height (feet)", font=("Arial", 16, "bold")).grid(row=12, column=0, sticky='w', pady=10, padx=(50, 0))
     wall_height_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Wall Height")
-    wall_height_entry.grid(row=11, column=1, sticky='w')
+    wall_height_entry.grid(row=12, column=1, sticky='w')
 
     # Create and place the appearance mode toggle button
     my_button = ctk.CTkButton(content_frame, text='Change Mode', command=change, font=("Arial", 16, "bold"), fg_color='#677791', hover_color='#677791',image=dark_light_image, compound='left')
-    my_button.grid(row=12, columnspan=1, pady=(50, 0), padx=(0, 0))  # Adjusted to be visible
+    my_button.grid(row=14, column=0, pady=(50, 0), padx=(50, 0), sticky='w')  # Adjusted to be visible
 
     root.drop_target_register(DND_ALL)
 
