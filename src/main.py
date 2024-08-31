@@ -92,7 +92,7 @@ def main():
     spectral_response_acceleration_entry = ctk.CTkEntry(content_frame,placeholder_text="Enter Spectral Response Acceleration",width=entry_width)
     spectral_response_acceleration_entry.grid(row=2, column=1,pady=10,)
 
-    calculate_button = ctk.CTkButton(content_frame,height=40,width=200,font=("Arial", 16, "bold"),fg_color='#4C7766',hover_color='#4C7766', text="Calculate Seismic Load", 
+    calculate_button = ctk.CTkButton(content_frame,height=40,width=200,font=("Arial", 16, "bold"),fg_color='#677791',hover_color='#677791', text="Calculate Seismic Load", 
                                  command=lambda: calculate_seismic_load(site_class_entry, 
                                                                         importance_factor_entry, 
                                                                         spectral_response_acceleration_entry))
@@ -101,12 +101,10 @@ def main():
     root.geometry("900x900")
     root.resizable(False, False)
     
-    image = ctk.CTkImage(light_image=Image.open("drag.png"),
-                        dark_image=Image.open("drag.png"), size=(100, 100))
     dark_light_image = ctk.CTkImage(light_image=Image.open("dark-light.png"),
                         dark_image=Image.open("dark-light.png"), size=(30, 30))
-    label = ctk.CTkLabel(content_frame, text='', corner_radius=10, font=("Arial", 16, "bold"), image=image)
-    label.grid(row=4, columnspan=2, pady=(10, 20), padx=(50, 0))
+    label = ctk.CTkLabel(content_frame, text="Drag and Drop", corner_radius=10, font=("Arial", 16, "bold"),fg_color='#677791')
+    label.grid(row=4, columnspan=2, pady=(10, 20), padx=(70, 0))
 
     ctk.CTkLabel(content_frame, text="Snow Load (lbs/sq. ft.):", font=("Arial", 16, "bold")).grid(row=5, column=0, sticky='w', pady=10, padx=(50, 0))
     snow_load_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Snow load")
@@ -117,7 +115,7 @@ def main():
     ice_load_entry.grid(row=6, column=1, sticky='w')
 
     remove_zero_point_var = BooleanVar(value=False)
-    checkbox = ctk.CTkCheckBox(content_frame, text="Remove (0,0,0) Point", variable=remove_zero_point_var, font=("Arial", 16, "bold"), fg_color='#4C7766', hover_color='#4C7766')
+    checkbox = ctk.CTkCheckBox(content_frame, text="Remove (0,0,0) Point", variable=remove_zero_point_var, font=("Arial", 16, "bold"), fg_color='#677791', hover_color='#677791')
     checkbox.grid(row=7, columnspan=2, sticky='w', pady=10, padx=(50, 0))
 
     ctk.CTkLabel(content_frame, text="Roof Uplift Pressure (psf)", font=("Arial", 16, "bold")).grid(row=8, column=0, sticky='w', pady=10, padx=(50, 0))
@@ -137,7 +135,7 @@ def main():
     wall_height_entry.grid(row=11, column=1, sticky='w')
 
     # Create and place the appearance mode toggle button
-    my_button = ctk.CTkButton(content_frame, text='Change Mode', command=change, font=("Arial", 16, "bold"), fg_color='#4C7766', hover_color='#4C7766',image=dark_light_image, compound='left')
+    my_button = ctk.CTkButton(content_frame, text='Change Mode', command=change, font=("Arial", 16, "bold"), fg_color='#677791', hover_color='#677791',image=dark_light_image, compound='left')
     my_button.grid(row=12, columnspan=1, pady=(50, 0), padx=(0, 0))  # Adjusted to be visible
 
     root.drop_target_register(DND_ALL)
