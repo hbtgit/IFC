@@ -68,7 +68,7 @@ def main():
     
     # Create a TkinterDnD.Tk root window
     root = CTk()
-    
+
     # Create a CTkScrollableFrame
     scrollable_frame = ctk.CTkScrollableFrame(root)
     scrollable_frame.pack(expand=True, fill='both')
@@ -99,12 +99,12 @@ def main():
     calculate_button.grid(row=3, column=1, pady=(30, 0), padx=(0, 0), sticky='w')
     root.title("IFC to PDF Converter")
     root.geometry("900x900")
-    root.resizable(False, False)
+    root.resizable(True, True)
     
     dark_light_image = ctk.CTkImage(light_image=Image.open("dark-light.png"),
                         dark_image=Image.open("dark-light.png"), size=(30, 30))
-    label = ctk.CTkLabel(content_frame, text="Drag and Drop Here..", corner_radius=10, font=("Arial", 16, "bold"))
-    label.grid(row=1, columnspan=5, pady=(10, 20), padx=(650, 0))
+    label = ctk.CTkLabel(content_frame, text="Drag and Drop an IFC File Here..", corner_radius=10, font=("Arial", 16, "bold"))
+    label.grid(row=1, columnspan=5, pady=(10, 20), padx=(600, 0))
     
     remove_zero_point_var = BooleanVar(value=False)
     checkbox = ctk.CTkCheckBox(content_frame, text="Remove (0,0,0) Point", variable=remove_zero_point_var, font=("Arial", 16, "bold"), fg_color='#677791', hover_color='#677791')
