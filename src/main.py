@@ -155,8 +155,7 @@ def main():
     }
 
     # Ensure the event is properly bound
-    root.dnd_bind('<<Drop>>', lambda event: on_drop(event, values))
-
+    root.dnd_bind('<<Drop>>', lambda event: on_drop(event, values))  
     root.mainloop()
 
 

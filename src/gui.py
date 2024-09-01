@@ -51,20 +51,6 @@ def on_drop(event, values):
         
         ifc_file_path = event.data.strip('{}')  # Remove curly braces if present
         print(f"Processed file path: {ifc_file_path}")
-        # print(event, type(event))
-        # for d in dir(event):
-        #     try:
-        #         print(">>> 1. ", d, eval(f'event.{d}()'))
-        #     except Exception as e:
-        #         print(">>> 2. ", d, eval(f'event.{d}'))
-        # print(dir(values['snow_load_entry']))
-        print(values)
-        for k, v in values.items():
-            try:
-                print(k, v or "0")
-            except:
-                pass
-
         # Entry widgets
         roof_uplift_entry = values["roof_uplift_entry"]
         
