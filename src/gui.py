@@ -95,7 +95,7 @@ def on_drop(event, values):
         # Validate and convert inputs safely
         try:
             roof_uplift = float(roof_uplift_entry or "0")
-            print('daaaaaa',roof_uplift)
+          
             roof_downpressure = float(roof_downpressure_entry or "0")
             wind_force = float(wind_force_entry or "0")
             wall_height = float(wall_height_entry or "0")
