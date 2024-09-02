@@ -85,7 +85,7 @@ def on_drop(event, values):
 
         # Call the live_load_widget function to get live load inputs
         live_loads = live_load_widget(floor_count)
-        print("Live Loads: ", live_loads)
+        ##print("Live Loads: ", live_loads)
 
         plot_coordinates(coordinates, areas, output_path, ifc_file_path)
         print(f"Output saved to: {output_path}")
