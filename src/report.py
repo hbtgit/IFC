@@ -139,7 +139,7 @@ def create_Aux_pdf(element_counts, output_path, ifc_path, floor_count, forces, m
         pdf.cell(200, 10, txt=f'{element_type} Count: {count}', ln=True)
 
     pdf.cell(200, 10, txt=multi_story_msg, ln=True)
-    pdf.cell(200, 10, txt=f'total_weight: {total_weight} lbs', ln=True)
+    pdf.cell(200, 10, txt=f'Total_weight: {total_weight} lbs', ln=True)
     # pdf.cell(200, 10, txt=f'Total Beam Weight: {total_beam_weight} lbs', ln=True)
     # pdf.cell(200, 10, txt=f'Total Column Weight: {total_column_weight} lbs', ln=True)
 
