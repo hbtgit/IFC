@@ -97,8 +97,9 @@ def calculate_beam_column_weight(ifc_path):
                     for quantity in prop_set.Quantities:
                         if quantity.is_a('IfcQuantityWeight') or quantity.Name == 'Gross Weight':
                             total_column_weight += get_weight_value(quantity, weight_attributes)
-
-    return round(total_beam_weight, 2), round(total_column_weight, 2)
+    total_weight = total_beam_weight + total_column_weight
+    return round(total_weight, 2)
+    # return round(total_beam_weight, 2), round(total_column_weight, 2)
 
 def calculate_area_from_coords(coord_list):
     coords = np.array(coord_list)

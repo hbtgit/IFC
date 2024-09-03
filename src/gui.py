@@ -117,13 +117,13 @@ def on_drop(event, values):
             dead_load = calculate_dead_load(ifc_file_path)
 
             # Calculate beam and column weights
-            total_beam_weight, total_column_weight = calculate_beam_column_weight(ifc_file_path)
+            total_weight = calculate_beam_column_weight(ifc_file_path)
 
             # Create Auxiliary PDF
             create_Aux_pdf(
                 element_counts, Aux_output_path, ifc_file_path, floor_count, forces, moments, perimeter,
                 roof_uplift, roof_downpressure, wind_force, wall_height, roof_perimeter, areas,
-                wind_loads, dead_load, total_column_weight, total_beam_weight, total_snow_load, ice_load_total, live_loads,
+                wind_loads, dead_load, total_weight, total_snow_load, ice_load_total, live_loads,
                 seismic_load
             )
 
