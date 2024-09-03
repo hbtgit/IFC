@@ -173,8 +173,8 @@ def calculate_wind_loads_and_present(wind_force, building_height, roof_perimeter
 
     return results
 
-def calculate_linear_load(perimeter, roof_uplift, roof_downpressure):
-    net_pressure = roof_downpressure - roof_uplift
+def calculate_linear_load(perimeter, uplift_pressures, down_pressures):
+    net_pressure = down_pressures - uplift_pressures
     linear_load = net_pressure * perimeter
     return round(linear_load, 2)
 

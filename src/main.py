@@ -118,13 +118,13 @@ def main():
     snow_load_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Snow load")
     snow_load_entry.grid(row=8, column=1, sticky='w')
 
-    ctk.CTkLabel(content_frame, text="Roof Uplift Pressure (psf)", font=("Arial", 16, "bold")).grid(row=9, column=0, sticky='w', pady=10, padx=(50, 0))
-    roof_uplift_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Roof Uplift")
-    roof_uplift_entry.grid(row=9, column=1, sticky='w')
+    # ctk.CTkLabel(content_frame, text="Roof Uplift Pressure (psf)", font=("Arial", 16, "bold")).grid(row=9, column=0, sticky='w', pady=10, padx=(50, 0))
+    # roof_uplift_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Roof Uplift")
+    # roof_uplift_entry.grid(row=9, column=1, sticky='w')
 
-    ctk.CTkLabel(content_frame, text="Roof Downpressure (psf)", font=("Arial", 16, "bold")).grid(row=10, column=0, sticky='w', pady=10, padx=(50, 0))
-    roof_downpressure_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Roof Down Pressure")
-    roof_downpressure_entry.grid(row=10, column=1, sticky='w')
+    # ctk.CTkLabel(content_frame, text="Roof Downpressure (psf)", font=("Arial", 16, "bold")).grid(row=10, column=0, sticky='w', pady=10, padx=(50, 0))
+    # roof_downpressure_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Roof Down Pressure")
+    # roof_downpressure_entry.grid(row=10, column=1, sticky='w')
 
     ctk.CTkLabel(content_frame, text="Wind Force (lbs)", font=("Arial", 16, "bold")).grid(row=11, column=0, sticky='w', pady=10, padx=(50, 0))
     wind_force_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Wind force")
@@ -144,8 +144,8 @@ def main():
     values = {
         "snow_load_entry": snow_load_entry.get().strip(),
         "ice_load_entry": ice_load_entry.get().strip(),
-        "roof_uplift_entry": roof_uplift_entry.get().strip(),
-        "roof_downpressure_entry": roof_downpressure_entry.get().strip(),
+        # "roof_uplift_entry": roof_uplift_entry.get().strip(),
+        # "roof_downpressure_entry": roof_downpressure_entry.get().strip(),
         "wind_force_entry": wind_force_entry.get().strip(),
         "wall_height_entry": wall_height_entry.get().strip(),
         "remove_zero_point_var": remove_zero_point_var,
