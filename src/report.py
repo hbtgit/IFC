@@ -123,7 +123,7 @@ def plot_coordinates(coordinates, areas, output_path, ifc_file_path):
     plt.savefig(output_path)
     # plt.show()
 
-def create_Aux_pdf(element_counts, output_path, ifc_path, floor_count, forces, moments, perimeter, roof_uplift, roof_downpressure, wind_force, wall_height, roof_perimeter, areas, wind_loads, dead_load, total_column_weight, total_beam_weight, total_snow_load, total_ice_load, live_loads, seismic_load):
+def create_Aux_pdf(element_counts, output_path, ifc_path, floor_count, forces, moments, perimeter, roof_uplift, roof_downpressure, wind_force, wall_height, roof_perimeter, areas, wind_loads, dead_load, total_weight, total_snow_load, total_ice_load, live_loads, seismic_load):
     from calculate import calculate_linear_load, calculate_wall_moments
     pdf = FPDF()
     multi_story_msg = "The building is a single story."
@@ -139,8 +139,9 @@ def create_Aux_pdf(element_counts, output_path, ifc_path, floor_count, forces, m
         pdf.cell(200, 10, txt=f'{element_type} Count: {count}', ln=True)
 
     pdf.cell(200, 10, txt=multi_story_msg, ln=True)
-    pdf.cell(200, 10, txt=f'Total Beam Weight: {total_beam_weight} lbs', ln=True)
-    pdf.cell(200, 10, txt=f'Total Column Weight: {total_column_weight} lbs', ln=True)
+    pdf.cell(200, 10, txt=f'Total_weight: {total_weight} lbs', ln=True)
+    # pdf.cell(200, 10, txt=f'Total Beam Weight: {total_beam_weight} lbs', ln=True)
+    # pdf.cell(200, 10, txt=f'Total Column Weight: {total_column_weight} lbs', ln=True)
 
     for floor in forces:
         total_force = np.sum(forces[floor])

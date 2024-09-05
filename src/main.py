@@ -117,12 +117,13 @@ def main():
     snow_load_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Snow load")
     snow_load_entry.grid(row=6, column=1,padx=(50,0), sticky='w')
 
-    # calculate_button = ctk.CTkButton(content_frame,height=40,width=200,font=("Arial", 16, "bold"),fg_color='#677791',hover_color='#677791', text="Calculate Seismic Load", 
-    #                              command=lambda: calculate_seismic_load(site_class_entry, 
-    #                                                                     importance_factor_entry, 
-    #                                                                     spectral_response_acceleration_entry))
-    # calculate_button.grid(row=3, column=1, pady=(30, 0), padx=(0, 0), sticky='w')
+    # ctk.CTkLabel(content_frame, text="Roof Uplift Pressure (psf)", font=("Arial", 16, "bold")).grid(row=9, column=0, sticky='w', pady=10, padx=(50, 0))
+    # roof_uplift_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Roof Uplift")
+    # roof_uplift_entry.grid(row=9, column=1, sticky='w')
 
+    # ctk.CTkLabel(content_frame, text="Roof Downpressure (psf)", font=("Arial", 16, "bold")).grid(row=10, column=0, sticky='w', pady=10, padx=(50, 0))
+    # roof_downpressure_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Roof Down Pressure")
+    # roof_downpressure_entry.grid(row=10, column=1, sticky='w')
 
     # ctk.CTkLabel(content_frame, text="Roof Uplift Pressure (psf)", font=("Arial", 16, "bold")).grid(row=9, column=0, sticky='w', pady=10, padx=(50, 0))
     # roof_uplift_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Roof Uplift")

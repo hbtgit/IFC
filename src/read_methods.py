@@ -152,6 +152,30 @@ def extract_forces_moments(ifc_path):
     else:
         raise ValueError(f"Unsupported IFC schema: {schema}")
 
+def extract_roof_pressures(ifc_path):
+    """Extracts roof uplift and downpressure from an IFC file."""
+    uplift_pressures = {}
+    down_pressures = {}
+
+    # Load the IFC file
+    ifc_file = ifcopenshell.open(ifc_path)
+
+    for element in ifc_file.by_type('IfcRoof'):
+        material_set = element.IsDefinedBy
+        if material_set:
+            for definition in material_set:
+                if definition.is_a('IfcRelDefinesByProperties'):
+                    property_set = definition.RelatingPropertyDefinition
+                    if property_set.is_a('IfcPropertySet'):
+                        for prop in property_set.HasProperties:
+                            if prop.is_a('IfcPropertySingleValue'):
+                                if 'UpliftPressure' in prop.Name:
+                                    uplift_pressures[element.GlobalId] = prop.NominalValue.wrappedValue
+                                if 'DownPressure' in prop.Name:
+                                    down_pressures[element.GlobalId] = prop.NominalValue.wrappedValue
+
+    return uplift_pressures, down_pressures
+
 def parse_ifc_file(ifc_path, zero_val=None):
     """Parses the IFC file to extract 3D coordinates using ifcopenshell."""
     remove_zero_point_var = BooleanVar(value=False)

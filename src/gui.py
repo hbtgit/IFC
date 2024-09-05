@@ -51,10 +51,8 @@ def on_drop(event, values):
         
         ifc_file_path = event.data.strip('{}')  # Remove curly braces if present
         print(f"Processed file path: {ifc_file_path}")
+
         # Entry widgets
-        roof_uplift_entry = values["roof_uplift_entry"]
-        
-        roof_downpressure_entry = values["roof_downpressure_entry"]
         wind_force_entry = values["wind_force_entry"]
         wall_height_entry = values["wall_height_entry"]
         snow_load_entry = values["snow_load_entry"]
@@ -63,23 +61,21 @@ def on_drop(event, values):
         site_class_entry = values["site_class_entry"]
         importance_factor_entry = values["importance_factor_entry"]
         spectral_response_acceleration_entry = values["spectral_response_acceleration_entry"]
-        
-        
+
         # Assume parse_ifc_file, extract methods, calculate methods are correctly implemented
-        from read_methods import parse_ifc_file, extract_element_counts, extract_section_types, extract_floor_data, extract_forces_moments
+        from read_methods import parse_ifc_file, extract_element_counts, extract_section_types, extract_floor_data, extract_forces_moments, extract_roof_pressures
         from calculate import calculate_perimeter, calculate_roof_perimeter, calculate_area_from_coords, calculate_snow_load, calculate_ice_load, calculate_wind_loads, calculate_dead_load, calculate_beam_column_weight
         from report import create_Aux_pdf, plot_coordinates
         from widget import live_load_widget
         from Seismicwidget import compute_seismic_load
-        
-        
-        ifc_file_path = event.data.strip('{}')  # Remove curly braces if present
+
         coordinates = parse_ifc_file(ifc_file_path, zero_val=zero_check)
         areas = calculate_area_from_coords(coordinates)
 
         output_path = os.path.splitext(ifc_file_path)[0] + "_coordinate_plots.pdf"
         floor_count = extract_floor_data(ifc_file_path)
         forces, moments = extract_forces_moments(ifc_file_path)
+        uplift_pressures, down_pressures = extract_roof_pressures(ifc_file_path)
         perimeter = calculate_perimeter(coordinates)
         roof_perimeter = calculate_roof_perimeter(coordinates)
 
@@ -106,7 +102,12 @@ def on_drop(event, values):
             roof_area = areas[0]  # Assuming the XY area is the roof area
             total_snow_load = calculate_snow_load(roof_area, snow_load_per_unit_area)
             ice_load_total = calculate_ice_load(roof_area, ice_load_per_unit_area)
-            seismic_load = compute_seismic_load (float(site_class_entry or "0"),float (importance_factor_entry or "0"), float (spectral_response_acceleration_entry or "0"))
+            seismic_load = compute_seismic_load(
+                float(site_class_entry or "0"),
+                float(importance_factor_entry or "0"),
+                float(spectral_response_acceleration_entry or "0")
+            )
+
             # Extract element counts
             element_counts = extract_element_counts(ifc_file_path)
 
@@ -117,13 +118,13 @@ def on_drop(event, values):
             dead_load = calculate_dead_load(ifc_file_path)
 
             # Calculate beam and column weights
-            total_beam_weight, total_column_weight = calculate_beam_column_weight(ifc_file_path)
+            total_weight = calculate_beam_column_weight(ifc_file_path)
 
             # Create Auxiliary PDF
             create_Aux_pdf(
                 element_counts, Aux_output_path, ifc_file_path, floor_count, forces, moments, perimeter,
-                roof_uplift, roof_downpressure, wind_force, wall_height, roof_perimeter, areas,
-                wind_loads, dead_load, total_column_weight, total_beam_weight, total_snow_load, ice_load_total, live_loads,
+                uplift_pressures, down_pressures, wind_force, wall_height, roof_perimeter, areas,
+                wind_loads, dead_load, total_weight, total_snow_load, ice_load_total, live_loads,
                 seismic_load
             )
 
@@ -132,13 +133,12 @@ def on_drop(event, values):
             if floor_count > 1:
                 multi_story_msg = f"The building has {floor_count} stories."
 
-            # messagebox.showinfo("Info", f"Plot saved to {output_path}\nAuxiliary data saved to {Aux_output_path}\n{multi_story_msg}")
             CTkMessagebox(title="Info", message=f"Plot saved to {output_path}\nAuxiliary data saved to {Aux_output_path}\n{multi_story_msg}")
 
         except ValueError as e:
-            # messagebox.showerror("Input Error", f"Please enter valid numbers: {e}")
             CTkMessagebox(title="Error", message=f"Please enter valid numbers: {e}")
     except Exception as e:
         print(f"Error in on_drop function: {e}")
-        # messagebox.showerror("Error", f"An error occurred: {e}")
         CTkMessagebox(title="Error", message=f"An error occurred: {e}", icon="cancel")
+
+
