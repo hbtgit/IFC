@@ -11,36 +11,6 @@ class CTk(ctk.CTk, TkinterDnD.DnDWrapper):
         super().__init__(*args, **kwargs)
         self.TkdndVersion = TkinterDnD._require(self)
 
-def calculate_seismic_load(site_class_entry, importance_factor_entry, spectral_response_acceleration_entry):
-    # Retrieve user input
-    site_class = float(site_class_entry.get().strip() or "0")  # Get value from Entry widget
-    importance_factor = float(importance_factor_entry.get().strip() or "0")
-    spectral_response_acceleration = float(spectral_response_acceleration_entry.get().strip() or "0")
-
-    # Calculate seismic load
-    seismic_load = compute_seismic_load(site_class, importance_factor, spectral_response_acceleration)
-    print(f"Seismic Load: {seismic_load} kN")
-
-def compute_seismic_load(site_class, importance_factor, spectral_response_acceleration):
-    # site_class is now a float, so we don't need to call .get()
-    # You might need a conversion or validation based on what you expect
-    # Assuming amplification_factors is a dictionary of floats
-    amplification_factors = {
-        # Example data; replace with actual values
-        0.0: 1.0,  # This is a placeholder; replace with your actual values
-        1.0: 1.5,
-        2.0: 2.0,
-    }
-    
-    # Use the float value to get the amplification factor
-    amplification_factor = amplification_factors.get(site_class, 1.0)  # Default to 1.0 if not found
-
-    # Perform the computation (assuming you have other code here)
-    # For example:
-    seismic_load = (importance_factor * spectral_response_acceleration * amplification_factor)
-
-    return seismic_load
-
 def get_path(event):
     dropped_file = event.data.replace("{","").replace("}", "")
     print(str(dropped_file))
