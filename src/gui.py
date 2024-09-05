@@ -85,7 +85,7 @@ def on_drop(event, values):
 
         # Call the live_load_widget function to get live load inputs
         live_loads = live_load_widget(floor_count)
-        print("Live Loads: ", live_loads)
+        ## print("Live Loads: ", live_loads)
 
         plot_coordinates(coordinates, areas, output_path, ifc_file_path)
         print(f"Output saved to: {output_path}")
@@ -95,7 +95,7 @@ def on_drop(event, values):
         # Validate and convert inputs safely
         try:
             roof_uplift = float(roof_uplift_entry or "0")
-            print('daaaaaa',roof_uplift)
+            ## print('daaaaaa',roof_uplift)
             roof_downpressure = float(roof_downpressure_entry or "0")
             wind_force = float(wind_force_entry or "0")
             wall_height = float(wall_height_entry or "0")
