@@ -88,8 +88,8 @@ def main():
     snow_load_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Snow load")
     snow_load_entry.grid(row=6, column=1,padx=(50,0), sticky='w')
 
-    ctk.CTkLabel(content_frame, text="Wind Force (lbs)", font=("Arial", 16, "bold")).grid(row=7, column=0, sticky='w', pady=10, padx=(50, 0))
-    wind_force_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Wind force")
+    ctk.CTkLabel(content_frame, text="Wind Speed (Mph)", font=("Arial", 16, "bold")).grid(row=7, column=0, sticky='w', pady=10, padx=(50, 0))
+    wind_force_entry = ctk.CTkEntry(content_frame, width=entry_width, placeholder_text="Enter Wind Speed")
     wind_force_entry.grid(row=7, column=1,padx=(50,0), sticky='w')
 
      
