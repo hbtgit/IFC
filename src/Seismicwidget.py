@@ -2,9 +2,8 @@ import tkinter as tk
 from tkinter import BooleanVar, Label, Entry, Checkbutton
 from tkinterdnd2 import TkinterDnD, DND_FILES
 import customtkinter as ctk
-import tkinterDnD
-
 import tkinter as tk
+
 textcolor='white'
 
 def calculate_seismic_load(site_class_entry, importance_factor_entry, spectral_response_acceleration_entry):

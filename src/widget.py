@@ -1,9 +1,8 @@
 import customtkinter as ctk
-
-import tkinterDnD
 from tkinterdnd2 import TkinterDnD, DND_FILES
 from Seismicwidget import create_seismic_input_widgets
 from PIL import Image
+
 mode = "dark"
 
 def change():

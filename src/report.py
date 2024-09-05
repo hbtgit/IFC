@@ -16,23 +16,15 @@ Include a header with Mythic Systems branding in each Python file:
 # (c) 2024 Mythic Systems
 # All rights reserved.
 '''
-#from main import *
+
 import matplotlib
 matplotlib.use('Agg')  # Use a non-interactive backend
-
-#from gui import *
-
-
-#from read import extract_ifc_data
-import ifcopenshell
-import re
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.spatial import Delaunay, ConvexHull
 from tkinter import Tk, messagebox, Label, Checkbutton, BooleanVar, Entry
 from tkinterdnd2 import TkinterDnD, DND_FILES
-import os
 from fpdf import FPDF
 import tkinter as tk
 from tkinter import simpledialog

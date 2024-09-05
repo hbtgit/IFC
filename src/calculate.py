@@ -16,24 +16,17 @@ Include a header with Mythic Systems branding in each Python file:
 # (c) 2024 Mythic Systems
 # All rights reserved.
 '''
+
+
 from read_methods import *
 from report import *
 from widget import *
-import matplotlib
-matplotlib.use('Agg')  # Use a non-interactive backend
-
 import ifcopenshell
-import re
 import seaborn as sns
 import matplotlib.pyplot as plt 
 import numpy as np
 from scipy.spatial import Delaunay, ConvexHull
-from tkinter import Tk, messagebox, Label, Checkbutton, BooleanVar, Entry
 from tkinterdnd2 import TkinterDnD, DND_FILES
-import os
-from fpdf import FPDF
-import tkinter as tk
-from tkinter import simpledialog
 
 def calculate_dead_load_with_live_load(ifc_file, live_loads, roof_area, snow_load_per_unit_area, ice_load_per_unit_area):
     model = ifcopenshell.open(ifc_file)
