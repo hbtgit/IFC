@@ -18,7 +18,6 @@ def change():
 results = []
 def live_load_widget(floor_count):
     live_loads = []
-
     # Create the main window
     root = ctk.CTk()
     root.title("Live Load Input")
@@ -28,9 +27,7 @@ def live_load_widget(floor_count):
     # Create a scrollable frame
     scrollable_frame = ctk.CTkScrollableFrame(master=root, width=480, height=480)
     scrollable_frame.pack(pady=10, padx=10, fill="both", expand=True)
-    # dark_light_image = ctk.CTkImage(light_image=Image.open("dark-light.png"),
-    #                     dark_image=Image.open("dark-light.png"), size=(30, 30))
-    # Add headers for the columns
+
     header_percentage = ctk.CTkLabel(scrollable_frame, text="Live Load Percentage",font=("Arial", 16, "bold"),)
     header_percentage.grid(row=0, column=0, pady=50, padx=(20,0), sticky='w')
 
@@ -83,9 +80,3 @@ def on_submit(live_loads, root):
     root.destroy()
     print(results) 
     return results # You can process the results here
-    
-    
-
-
-# a=live_load_widget(2)
-# print(a)
