@@ -27,6 +27,22 @@ def change():
         mode = "dark"
         # Clear text box if needed
 
+def on_submit(values):
+    # Collect all the values
+    values = {
+        "snow_load_entry": values["snow_load_entry"].get().strip(),
+        "ice_load_entry": values["ice_load_entry"].get().strip(),
+        "wind_speed_entry": values["wind_speed_entry"].get().strip(),
+        "remove_zero_point_var": values["remove_zero_point_var"].get(),
+        "site_class_entry": values["site_class_entry"].get().strip(),
+        "importance_factor_entry": values["importance_factor_entry"].get().strip(),
+        "spectral_response_acceleration_entry": values["spectral_response_acceleration_entry"].get().strip(),
+    }
+    
+    # Process or print the collected values
+    print(values)  # Replace this with actual processing code
+
+
 def main():
     from gui import on_drop
     ctk.set_appearance_mode("system")  # Default to light mode
@@ -94,7 +110,7 @@ def main():
 
      
 
-    values = {
+    entries = {
         "snow_load_entry": snow_load_entry.get().strip(),
         "ice_load_entry": ice_load_entry.get().strip(),
         "wind_speed_entry": wind_speed_entry.get().strip(),
@@ -103,9 +119,12 @@ def main():
         "importance_factor_entry": importance_factor_entry.get().strip(),
         "spectral_response_acceleration_entry": spectral_response_acceleration_entry.get().strip(),
     }
+    submit_button = ctk.CTkButton(content_frame, text="Submit", font=("Arial", 16, "bold"),
+                                  command=lambda: on_submit(entries))
+    submit_button.grid(row=8, column=1, pady=20, padx=(50, 0), sticky='w')
 
     # Ensure the event is properly bound
-    root.dnd_bind('<<Drop>>', lambda event: on_drop(event, values))  
+    root.dnd_bind('<<Drop>>', lambda event: on_drop(event, entries))  
     root.mainloop()
 
 if __name__ == '__main__':
