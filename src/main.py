@@ -42,6 +42,23 @@ def on_submit(entries):
     # Process or print the collected values
     print(values)  # Replace this with actual processing code
 
+def on_calculate(entries):
+    # Collect all the values from entry widgets
+    values = {
+        "snow_load_entry": entries["snow_load_entry"].get().strip(),
+        "ice_load_entry": entries["ice_load_entry"].get().strip(),
+        "wind_speed_entry": entries["wind_speed_entry"].get().strip(),
+        "remove_zero_point_var": entries["remove_zero_point_var"].get(),
+        "site_class_entry": entries["site_class_entry"].get().strip(),
+        "importance_factor_entry": entries["importance_factor_entry"].get().strip(),
+        "spectral_response_acceleration_entry": entries["spectral_response_acceleration_entry"].get().strip(),
+    }
+    
+    # Perform calculations based on the collected values
+    # Replace this with your actual calculation logic
+    result = f"Calculated values based on: {values}"
+    print(result)  # Or display it in a label or messagebox
+
 
 def main():
     from gui import on_drop
@@ -119,9 +136,13 @@ def main():
         "importance_factor_entry": importance_factor_entry,
         "spectral_response_acceleration_entry": spectral_response_acceleration_entry,
     }
-    submit_button = ctk.CTkButton(content_frame, text="Submit", font=("Arial", 16, "bold"),
+    submit_button = ctk.CTkButton(content_frame, text="Submit", font=("Arial", 16, "bold"), fg_color='#677791', hover_color='#677791',
                                   command=lambda: on_submit(entries))
     submit_button.grid(row=8, column=1, pady=20, padx=(50, 0), sticky='w')
+
+    calculate_button = ctk.CTkButton(content_frame, text="Calculate", font=("Arial", 16, "bold"),fg_color='#677791', hover_color='#677791',
+                                     command=lambda: on_calculate(entries))
+    calculate_button.grid(row=12, column=2, pady=20, padx=(50, 0), sticky='e')
 
     # Ensure the event is properly bound
     root.dnd_bind('<<Drop>>', lambda event: on_drop(event, entries))  
