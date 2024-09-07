@@ -27,16 +27,16 @@ def change():
         mode = "dark"
         # Clear text box if needed
 
-def on_submit(values):
+def on_submit(entries):
     # Collect all the values
     values = {
-        "snow_load_entry": values["snow_load_entry"].get().strip(),
-        "ice_load_entry": values["ice_load_entry"].get().strip(),
-        "wind_speed_entry": values["wind_speed_entry"].get().strip(),
-        "remove_zero_point_var": values["remove_zero_point_var"].get(),
-        "site_class_entry": values["site_class_entry"].get().strip(),
-        "importance_factor_entry": values["importance_factor_entry"].get().strip(),
-        "spectral_response_acceleration_entry": values["spectral_response_acceleration_entry"].get().strip(),
+        "snow_load_entry": entries["snow_load_entry"].get().strip(),
+        "ice_load_entry": entries["ice_load_entry"].get().strip(),
+        "wind_speed_entry": entries["wind_speed_entry"].get().strip(),
+        "remove_zero_point_var": entries["remove_zero_point_var"].get(),
+        "site_class_entry": entries["site_class_entry"].get().strip(),
+        "importance_factor_entry": entries["importance_factor_entry"].get().strip(),
+        "spectral_response_acceleration_entry": entries["spectral_response_acceleration_entry"].get().strip(),
     }
     
     # Process or print the collected values
@@ -111,13 +111,13 @@ def main():
      
 
     entries = {
-        "snow_load_entry": snow_load_entry.get().strip(),
-        "ice_load_entry": ice_load_entry.get().strip(),
-        "wind_speed_entry": wind_speed_entry.get().strip(),
+        "snow_load_entry": snow_load_entry,
+        "ice_load_entry": ice_load_entry,
+        "wind_speed_entry": wind_speed_entry,
         "remove_zero_point_var": remove_zero_point_var,
-        "site_class_entry": site_class_entry.get().strip(),
-        "importance_factor_entry": importance_factor_entry.get().strip(),
-        "spectral_response_acceleration_entry": spectral_response_acceleration_entry.get().strip(),
+        "site_class_entry": site_class_entry,
+        "importance_factor_entry": importance_factor_entry,
+        "spectral_response_acceleration_entry": spectral_response_acceleration_entry,
     }
     submit_button = ctk.CTkButton(content_frame, text="Submit", font=("Arial", 16, "bold"),
                                   command=lambda: on_submit(entries))
