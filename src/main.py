@@ -140,7 +140,7 @@ def main():
                                   command=lambda: on_submit(entries))
     submit_button.grid(row=8, column=1, pady=20, padx=(50, 0), sticky='w')
 
-    calculate_button = ctk.CTkButton(content_frame, text="Calculate", font=("Arial", 16, "bold"),fg_color='#677791', hover_color='#677791',
+    calculate_button = ctk.CTkButton(content_frame, text="Calculate", font=("Arial", 16, "bold"), fg_color='#677791', hover_color='#677791',
                                      command=lambda: on_calculate(entries))
     calculate_button.grid(row=12, column=2, pady=20, padx=(50, 0), sticky='e')
 

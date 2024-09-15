@@ -53,8 +53,7 @@ def on_drop(event, values):
         print(f"Processed file path: {ifc_file_path}")
 
         # Entry widgets
-        wind_force_entry = values["wind_force_entry"]
-        wall_height_entry = values["wall_height_entry"]
+        wind_speed_entry = values["wind_speed_entry"]
         snow_load_entry = values["snow_load_entry"]
         ice_load_entry = values["ice_load_entry"]
         zero_check = values["remove_zero_point_var"]
@@ -90,11 +89,10 @@ def on_drop(event, values):
 
         # Validate and convert inputs safely
         try:
-            roof_uplift = float(roof_uplift_entry or "0")
+            # roof_uplift = float(roof_uplift_entry or "0")
             ## print('daaaaaa',roof_uplift)
-            roof_downpressure = float(roof_downpressure_entry or "0")
-            wind_force = float(wind_force_entry or "0")
-            wall_height = float(wall_height_entry or "0")
+            # roof_downpressure = float(roof_downpressure_entry or "0")
+            wind_speed = float(wind_speed_entry or "0")
             snow_load_per_unit_area = float(snow_load_entry or "0")
             ice_load_per_unit_area = float(ice_load_entry or "0")
 
@@ -123,7 +121,7 @@ def on_drop(event, values):
             # Create Auxiliary PDF
             create_Aux_pdf(
                 element_counts, Aux_output_path, ifc_file_path, floor_count, forces, moments, perimeter,
-                uplift_pressures, down_pressures, wind_force, wall_height, roof_perimeter, areas,
+                uplift_pressures, down_pressures, wind_speed, roof_perimeter, areas,
                 wind_loads, dead_load, total_weight, total_snow_load, ice_load_total, live_loads,
                 seismic_load
             )
